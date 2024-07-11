@@ -1,0 +1,22 @@
+pdb_file_path = ['./ASPG_pdb/pdb1apy.pdb', './ASPG_pdb/pdb1apz.pdb', './ASPG_pdb/pdb1ayy.pdb', './ASPG_pdb/pdb1p4k.pdb', './ASPG_pdb/pdb1p4v.pdb', './ASPG_pdb/pdb2gac.pdb', './ASPG_pdb/pdb2gaw.pdb', './ASPG_pdb/pdb2gl9.pdb', './ASPG_pdb/pdb3ljq.pdb', './ASPG_pdb/pdb4r4y.pdb', './ASPG_pdb/pdb5v2i.pdb', './ASPG_pdb/pdb9gaa.pdb', './ASPG_pdb/pdb9gac.pdb', './ASPG_pdb/pdb9gaf.pdb']
+ref_seq = './ASPG_pdb/AF-Q7L266-F1-model_v4.pdb'
+
+Conservation Scores (ConSurf DB):
+ConSurf DB:
+1APY
+1P4K
+5V2I
+9GAA
+9GAC
+
+Redirects to:
+1APZ -> 1APYA
+1AYY -> 2GL9C
+1P4V -> 1P4KA
+2GAC -> 2GL9C
+2GAW -> 2GL9C
+2GL9 -> 2GL9C
+3LJQ -> 3LJQC
+4R4Y -> 5V2IA
+9GAF -> 9GAFC
+
