@@ -1,2 +1,0 @@
-pdb_file_path = ['./ASPG_pdb/pdb3epz.pdb', './ASPG_pdb/pdb3pta.pdb', './ASPG_pdb/pdb3swr.pdb', './ASPG_pdb/pdb4wxx.pdb', './ASPG_pdb/pdb4yoc.pdb', './ASPG_pdb/pdb4z96.pdb', './ASPG_pdb/pdb4z97.pdb', './ASPG_pdb/pdb5wvo.pdb', './ASPG_pdb/pdb5ydr.pdb', './ASPG_pdb/pdb6k3k.pdb', './ASPG_pdb/pdb6l1f.pdb', './ASPG_pdb/pdb6x9k.pdb', './ASPG_pdb/pdb7sfc.pdb', './ASPG_pdb/pdb7sfe.pdb', './ASPG_pdb/pdb7sff.pdb', './ASPG_pdb/pdb7sfg.pdb', './ASPG_pdb/pdb8v9u.pdb']
-ref_seq = './DNMT1_pdb/AF-P26358-F1-model_v4.pdb'

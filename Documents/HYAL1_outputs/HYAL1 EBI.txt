@@ -1,0 +1,4 @@
+pdb_file_path = ['./HYAL1_pdb/pdb2pe4.pdb']
+ref_seq = './HYAL1_pdb/AF-Q12794-F1-model_v4.pdb'
+
+Set nim_residues to 450 

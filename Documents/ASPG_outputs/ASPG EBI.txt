@@ -20,3 +20,4 @@ Redirects to:
 4R4Y -> 5V2IA
 9GAF -> 9GAFC
 
+Set num_residues to 350
