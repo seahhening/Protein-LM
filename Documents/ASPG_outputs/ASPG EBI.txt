@@ -21,3 +21,4 @@ Redirects to:
 9GAF -> 9GAFC
 
 Set num_residues to 350
+Position 301 is causing me some problems, troubleshooted but couldn't solve the issue
