@@ -1,6 +1,0 @@
-pdb_file_path = ['./DNMT1_pdb/pdb3epz.pdb', './DNMT1_pdb/pdb3pta.pdb', './DNMT1_pdb/pdb3swr.pdb', './DNMT1_pdb/pdb4wxx.pdb', './DNMT1_pdb/pdb4yoc.pdb', './DNMT1_pdb/pdb4z96.pdb', './DNMT1_pdb/pdb4z97.pdb', './DNMT1_pdb/pdb5wvo.pdb', './DNMT1_pdb/pdb5ydr.pdb', './DNMT1_pdb/pdb6k3a.pdb', './DNMT1_pdb/pdb6l1f.pdb', './DNMT1_pdb/pdb6x9k.pdb', './DNMT1_pdb/pdb7sfc.pdb', './DNMT1_pdb/pdb7sfe.pdb', './DNMT1_pdb/pdb7sff.pdb', './DNMT1_pdb/pdb7sfg.pdb']
-ref_seq = './DNMT1_pdb/AF-P26358-F1-model_v4.pdb'
-
-
-# Removed 8v9u
-Set num_residues to 1600
