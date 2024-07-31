@@ -1,41 +1,44 @@
-# Amino N-neighbour Function (for Generative Protein Design)
-<img src="https://github.com/Reishuen/Protein-LM/assets/102805134/168e1979-f202-4ae0-9305-d6ad24f7abed" width="50%"/>
+# Analysis of Protein Sequence (for Generative Protein Design)
 
-V1.0 by Rei Shuen Ng, 5 July 2024
+V0.2 by Xiang Yang, 31 July 2024
 
 # Overview
-AlphaFold3 uses a generative diffusion model to predict protein structure from input protein sequences. <br><br>
-Protein designers can insert their own constraints to bias the diffusion model's gaussian denoising process, thereby producing novel proteins with desired properties. 
+AlphaFold3 uses a generative diffusion model to predict protein structure from input protein sequences. <br>
 
-<div style="display: flex; justify-content: space-between;">
-  <img src="https://github.com/Reishuen/Protein-LM/assets/102805134/842ea596-cedf-43d2-b664-846ef1c74bff" width="45%">
-  <img src="https://github.com/Reishuen/Protein-LM/assets/102805134/f1d369aa-f7c3-4334-9201-f8d09400324d" width="45%">
-</div>
+Protein designers can insert their own constraints to bias the diffusion model's gaussian denoising process, thereby producing novel proteins with desired properties. <br>
+
+This project analyses a protein sequence on the basis of 5 parameters: N-Neighbour Count, Conservation Score, Hydrophobicity, Volume and Proton Donating/Accepting Ability.
 
 
 # How to Use
-The Amino N-neighbour Function's purpose is to calculate the distance between Carbon-Alpha atoms of amino acids within a protein, giving a N-neighbour count of each amino acid. Amino acids with the highest N-neighbour counts can be interpreted physically as having the most interactions with neighbouring amino acids, suggesting its criticality to the protein's function. <br>
+For the selected protein, obtain the consensus sequence from the [AlphaFold Protein Database](https://alphafold.ebi.ac.uk/). This sequence will be used as a backbone for other experimentally determined PDB data to be mapped on.
 
-Hence when designing novel proteins, we might want to conserve amino acids with N-neighbour counts.
+Experimental information from PDB sequences are obtained from [Uniprot Database](https://www.uniprot.org/).
 
-This hypothesis is cross-validated against evolutionarily conserved regions of the protein, represented by conservation scores, which justify the biological importance of certain amino acids by showing its conservation across species.
-<br><br>
-<img src="https://github.com/Reishuen/Protein-LM/assets/102805134/684b1377-dbd2-4566-9a8d-987181fac204" width="45%"/>
+Save the pdb files in a folder named <i>protein_pdb</i> under your working directory. At the `main` function, update the variables <i>pdb_file_paths</i>, <i>ref_seq</i>, <i>protein_id</i> and <i>num_residues</i>.
 
-# Example use
+Run the `main` function
+<br>
+
+## Example Use (Protein: Lactate Oxidase)
+
+Uniprot PDB Files:
+
+![Uniprot PDB Files](image.png)
+
+AlphaFold Protein Database:
+![AlphaFold Consensus Sequence](image-1.png)
+
 ## Inputs: 
-#### (1) Experimental PDB files of {target protein} obtained through Uniprot 
-#### (2) RefSeq PDB file obtained through AlphaFoldDB
+(1) Experimental PDB files of <i>target protein</i> obtained through Uniprot <br>
+(2) Ref_Seq PDB file obtained through AlphaFoldDB <br>
+(3) Number of amino acids <br>
+(4) Weights for analysis of protein sequence
 
 ## Outputs:
-#### (1) N-neighbour count per amino acid vector
-#### (2) Distance matrix between CA atoms in amino acids
-#### (3) Visualisation plots
-
-<div style="display: flex; justify-content: space-between;">
-  <img src="https://github.com/Reishuen/Protein-LM/assets/102805134/b76f6d5e-ccf9-4eb0-9faa-544569a71736" width="45%">
-  <img src="https://github.com/Reishuen/Protein-LM/assets/102805134/229b0d3b-2cf6-453e-9540-a27b5e768be9" width="45%">
-</div>
+(1) Compiled data of protein sequence with 5 parameters in csv format <br>
+(2) Visual plot of the protein sequence and properties of amino acids <br>
+(3) Weighted sums of normalised data for each amino acid
 
 
 ### Demo:
