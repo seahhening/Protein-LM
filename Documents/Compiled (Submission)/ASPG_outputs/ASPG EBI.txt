@@ -1,4 +1,4 @@
-pdb_file_path = ['./ASPG_pdb/pdb1apy.pdb', './ASPG_pdb/pdb1apz.pdb', './ASPG_pdb/pdb1ayy.pdb', './ASPG_pdb/pdb1p4k.pdb', './ASPG_pdb/pdb1p4v.pdb', './ASPG_pdb/pdb2gac.pdb', './ASPG_pdb/pdb2gaw.pdb', './ASPG_pdb/pdb2gl9.pdb', './ASPG_pdb/pdb3ljq.pdb', './ASPG_pdb/pdb4r4y.pdb', './ASPG_pdb/pdb5v2i.pdb', './ASPG_pdb/pdb9gaa.pdb', './ASPG_pdb/pdb9gac.pdb', './ASPG_pdb/pdb9gaf.pdb']
+pdb_file_paths = ['./ASPG_pdb/pdb1apy.pdb', './ASPG_pdb/pdb1apz.pdb', './ASPG_pdb/pdb1ayy.pdb', './ASPG_pdb/pdb1p4k.pdb', './ASPG_pdb/pdb1p4v.pdb', './ASPG_pdb/pdb2gac.pdb', './ASPG_pdb/pdb2gaw.pdb', './ASPG_pdb/pdb2gl9.pdb', './ASPG_pdb/pdb3ljq.pdb', './ASPG_pdb/pdb4r4y.pdb', './ASPG_pdb/pdb5v2i.pdb', './ASPG_pdb/pdb9gaa.pdb', './ASPG_pdb/pdb9gac.pdb', './ASPG_pdb/pdb9gaf.pdb']
 ref_seq = './ASPG_pdb/AF-Q7L266-F1-model_v4.pdb'
 
 Conservation Scores (ConSurf DB):
