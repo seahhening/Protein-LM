@@ -45,23 +45,94 @@ AlphaFold Protein Database:
 Try out the [Notebook Demo](https://github.com/salesforce/LAVIS/blob/main/examples/blip2_instructed_generation.ipynb) of this function applied to DNMT1 (homo sapien)! [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/salesforce/LAVIS/blob/main/examples/blip2_instructed_generation.ipynb)
 
 # Functions
-### 1.1) pdb_to_n_neighbour_vector
+### 1.1 download_conservation_scores
 ```
-pdb_to_n_neighbour_vector(pdb_file_path, angstrom = 5, save_distance_matrix = True)
-```
-### 1.2) merge_to_ref_seq
-```
-# Call this merging function after processing each Experimental PDB seq
-merge_to_ref_seq(ref_seq, other_seq)
-```
+Downloads conservation score from Consurf Database using specific PDB file
 
-### 1.3) visualise_seq (TBC)
-```
-visualise_seq(ref_seq, count >= 5)
-```
+Input:
+- pdb_file_path (str): Path to PDB file
+- protein_id (str): Protein ID
+- chains (str): Chain ID
 
-### 1.4) plot_conservation_vs_neighbours (for cross-validation)
+Output:
+- Folder with conservation score in txt format, file named with PDB ID 
 ```
-plot_conservation_vs_neighbours(updated_ref_seq)
+### 1.2 extract_consevation_score
 ```
+Extracts conservation scores from downloaded conservation score files
+```
+### 1.3 extract_pdb_info
+```
+Reads a PDB file and extracts 3D spatial coordinates and amino acids.
 
+Input:
+- pdb_file_path (str): Path to the PDB file
+
+Output:  
+- A list of dictionaries, each containing information about each atom
+```
+### 2.1 find_nearest_neighbour
+```
+Find the n-neighbors closest to the 'CA' atoms in the data using brute force with Euclidean distance.
+
+Input:
+- data: list of dictionaries, each containing atom information
+- angstrom (float): distance threshold for neighbour counting
+
+Output:
+- data: list of dictionaries, containing only 'CA' atoms with updated 'neighbour_count' field, and without 'model_id', 'atom_name', and 'atom_coords' keys.
+```
+### 2.2 find_hydrophobicity
+```
+Assign hydrophobicity values to an amino acid, using IMGT Scale
+
+Input:
+- aa_residue: Dict Object with 'residue_name'
+
+Ouput:
+- aa_residue: Dict Object with 'hydrophobicity' key
+```
+### 2.3 find_volume
+```
+Assign volume to an amino acid, using IMGT Scale
+
+Input:
+- aa_residue: Dict object with 'residue_name'
+
+Ouput:
+- aa_residue: Dict object with 'volume' key
+```
+### 2.4 find_proton_donor
+```
+Classifies amino acid based on proton accepting/donating ability
+
+Input:
+- aa_residue: Dict object with 'residue_name'
+
+Ouput:
+- aa_residue: Dict object with 'proton_donor' key
+```
+### 2.4 merge_residue_data
+```
+Merges conservation score and neighbour count, then assigns hydrophobicity, volume and proton donor/acceptor
+
+Input:
+- conservation_scores: List of dictionaries with conservation score
+- neighbour_counts: List of dictionaries with neighbour count
+
+Output:
+- merged_data: List of dictionaries with residue id, residue name, consevation score, neighbour count, hydrophobicity, volume and proton donor/acceptor
+```
+### 2.5 pdb_to_compiled_vector
+```
+For each pdb sequence, outputs the combined data with all 5 parameters
+
+Input:
+- pdb_file_path (str)
+- angstrom (int)
+- protein_id (str)
+
+Output:
+- merged_residues: List of dictionaries with with residue id, residue name, consevation score, neighbour count, hydrophobicity, volume and proton donor/acceptor
+```
+### 2.6 merge_to_ref_seq
