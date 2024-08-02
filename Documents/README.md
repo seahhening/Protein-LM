@@ -22,29 +22,30 @@ Run the `main` function
 
 ## Example Use (Protein: Lactate Oxidase)
 
-Uniprot PDB Files:
+Uniprot PDB Files:<br>
 <img src="image.png" alt="Uniprot PDB Files" width=80%/>
 
-PDB File Download from EMBL-EBI Page
+PDB File Download from EMBL-EBI Page<br>
 <img src="image-2.png" alt="PDB Download_2du2" width=80%/>
 
-AlphaFold Protein Database:
+AlphaFold Protein Database:<br>
 <img src="image-1.png" alt="AlphaFold Consensus Sequence" width=80%/>
 
-#### Sample Inputs:
+#### Sample Inputs:<br>
 <img src="image-3.png" alt="Sample Inputs" width=80%/>
 
-#### Sample Outputs
-(1) Neighbour Count & Conservation Score Merged Plot
-<img src="Documents/Compiled (Submission)/LOX_outputs/LOX_merged.png" alt="merged_LOX" width=80%/>
+#### Sample Outputs<br>
+(1) Neighbour Count & Conservation Score Merged Plot<br>
+<img src="https://github.com/XiangYang2601/Protein-LM/blob/main/Documents/Compiled%20(Submission)/LOX_outputs/LOX_merged.png?raw=true" alt="merged_LOX" width=80%/>
 
-(2) Summary Plot
-![LOX_summary_plot](Documents/Compiled (Submission)/LOX_outputs/LOX_summary.png)
+(2) Summary Plot<br>
+<img src="https://github.com/XiangYang2601/Protein-LM/blob/main/Documents/Compiled%20(Submission)/LOX_outputs/LOX_summary.png?raw=true" alt="merged_summary" width=80%>
 
-(3) Summary in CSV
-![alt text](image-4.png)
+(3) Summary in CSV<br>
+<img src="image-5.png" alt="CSV Summary" width=80%/>
 
 (4) Analysis Output in CSV
+<img src="image-4.png" alt="CSV Analysis" width=80%/>
 
 
 ## Inputs: 

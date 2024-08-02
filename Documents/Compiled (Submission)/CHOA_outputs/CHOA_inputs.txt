@@ -1,0 +1,12 @@
+pdb_file_paths = ['./CHOA_pdb/pdb1b4v.pdb', './CHOA_pdb/pdb1b8s.pdb', './CHOA_pdb/pdb1cbo.pdb', './CHOA_pdb/pdb1cc2.pdb', 
+'./CHOA_pdb/pdb1ijh.pdb', './CHOA_pdb/pdb1mxt.pdb', './CHOA_pdb/pdb1n1p.pdb', './CHOA_pdb/pdb1n4u.pdb', 
+'./CHOA_pdb/pdb1n4v.pdb', './CHOA_pdb/pdb1n4w.pdb', './CHOA_pdb/pdb2gew.pdb', './CHOA_pdb/pdb3b3r.pdb', 
+'./CHOA_pdb/pdb3b6d.pdb', './CHOA_pdb/pdb3cnj.pdb', './CHOA_pdb/pdb3gyi.pdb', './CHOA_pdb/pdb3gyj.pdb', 
+'./CHOA_pdb/pdb4rek.pdb', './CHOA_pdb/pdb4u2l.pdb', './CHOA_pdb/pdb4u2s.pdb', './CHOA_pdb/pdb4u2t.pdb', 
+'./CHOA_pdb/pdb4xwr.pdb', './CHOA_pdb/pdb4xxg.pdb', './CHOA_pdb/pdb5kwf.pdb']
+
+
+ref_seq = './CHOA_pdb/AF-P12676-F1-model_v4.pdb'
+
+protein_id = "CHOA"
+num_residues = 546
