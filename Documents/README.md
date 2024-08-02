@@ -23,20 +23,20 @@ Run the `main` function
 ## Example Use (Protein: Lactate Oxidase)
 
 Uniprot PDB Files:
-![Uniprot PDB Files](image.png)
+<img src="image.png" alt="Uniprot PDB Files" width=80%/>
 
-PDB File Download from EMBL-EBI Pagge
-![2du2 PDB Download](image-2.png)
+PDB File Download from EMBL-EBI Page
+<img src="image-2.png" alt="PDB Download_2du2" width=80%/>
 
 AlphaFold Protein Database:
-![AlphaFold Consensus Sequence](image-1.png)
+<img src="image-1.png" alt="AlphaFold Consensus Sequence" width=80%/>
 
 #### Sample Inputs:
-![Sample Inputs](image-3.png)
+<img src="image-3.png" alt="Sample Inputs" width=80%/>
 
 #### Sample Outputs
 (1) Neighbour Count & Conservation Score Merged Plot
-![LOX_merge](Documents/Compiled (Submission)/LOX_outputs/LOX_merged.png)
+<img src="Documents/Compiled (Submission)/LOX_outputs/LOX_merged.png" alt="merged_LOX" width=80%/>
 
 (2) Summary Plot
 ![LOX_summary_plot](Documents/Compiled (Submission)/LOX_outputs/LOX_summary.png)
