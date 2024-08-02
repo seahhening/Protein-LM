@@ -23,11 +23,29 @@ Run the `main` function
 ## Example Use (Protein: Lactate Oxidase)
 
 Uniprot PDB Files:
-
 ![Uniprot PDB Files](image.png)
+
+PDB File Download from EMBL-EBI Pagge
+![2du2 PDB Download](image-2.png)
 
 AlphaFold Protein Database:
 ![AlphaFold Consensus Sequence](image-1.png)
+
+#### Sample Inputs:
+![Sample Inputs](image-3.png)
+
+#### Sample Outputs
+(1) Neighbour Count & Conservation Score Merged Plot
+![LOX_merge](Documents/Compiled (Submission)/LOX_outputs/LOX_merged.png)
+
+(2) Summary Plot
+![LOX_summary_plot](Documents/Compiled (Submission)/LOX_outputs/LOX_summary.png)
+
+(3) Summary in CSV
+![alt text](image-4.png)
+
+(4) Analysis Output in CSV
+
 
 ## Inputs: 
 (1) Experimental PDB files of <i>target protein</i> obtained through Uniprot <br>
@@ -41,7 +59,7 @@ AlphaFold Protein Database:
 (3) Weighted sums of normalised data for each amino acid
 
 
-### Demo:
+### Demo: (To be Updated)
 Try out the [Notebook Demo](https://github.com/salesforce/LAVIS/blob/main/examples/blip2_instructed_generation.ipynb) of this function applied to DNMT1 (homo sapien)! [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/salesforce/LAVIS/blob/main/examples/blip2_instructed_generation.ipynb)
 
 # Functions
@@ -136,3 +154,42 @@ Output:
 - merged_residues: List of dictionaries with with residue id, residue name, consevation score, neighbour count, hydrophobicity, volume and proton donor/acceptor
 ```
 ### 2.6 merge_to_ref_seq
+```
+Updates cosesnsus sequence with information extracted from PDB file
+
+Input:
+- ref_seq (str): File path to consensus sequence
+- completed (dict): Processed pdb file to be updates to ref_seq
+
+Output:
+- updated_ref_seq: List of dictionaries
+```
+### 3.1 plot_and_calculate_correlation
+```
+Plots neighbout count and conservation scores for all residues
+
+Input: 
+- data: List of dictionaries
+- angstrom
+- protein_id
+- num_residues
+
+Output:
+- scatter plot: y axes are neighbour count and conservation score, x axis is residue id
+- caculated correlation between neighbour counts and conservations scores
+```
+### 3.2 plot_residue_properties
+```
+Plots the different parameters of each amino acid residue
+
+Input:
+- data: List of dictionaries
+- protein_id
+- num_residues
+
+Output:
+- summary chart with 5 parameters
+```
+### 3.3 analyse_protein
+
+### 3.4 analyse_protein2
