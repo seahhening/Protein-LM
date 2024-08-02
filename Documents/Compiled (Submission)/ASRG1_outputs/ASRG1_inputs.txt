@@ -1,0 +1,8 @@
+pdb_file_paths = ['./ASRG1_pdb/pdb3tkj.pdb', './ASRG1_pdb/pdb4et0.pdb', './ASRG1_pdb/pdb4o0c.pdb', './ASRG1_pdb/pdb4o0d.pdb', 
+'./ASRG1_pdb/pdb4o0e.pdb', './ASRG1_pdb/pdb4o0f.pdb', './ASRG1_pdb/pdb4o0g.pdb', './ASRG1_pdb/pdb4o0h.pdb',
+'./ASRG1_pdb/pdb4osx.pdb', './ASRG1_pdb/pdb4osy.pdb', './ASRG1_pdb/pdb4pvp.pdb', './ASRG1_pdb/pdb4pvq.pdb',
+'./ASRG1_pdb/pdb4pvr.pdb', './ASRG1_pdb/pdb4pvs.pdb', './ASRG1_pdb/pdb4zm9.pdb']
+
+ref_seq = './ASRG1_pdb/AF-Q7L266-F1-model_v4.pdb'
+
+num_residues = 308
