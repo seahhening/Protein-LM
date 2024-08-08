@@ -7,6 +7,9 @@ pdb_file_paths = ['./CHOA_pdb/pdb1b4v.pdb', './CHOA_pdb/pdb1b8s.pdb', './CHOA_pd
 
 
 ref_seq = './CHOA_pdb/AF-P12676-F1-model_v4.pdb'
+protein_id = 'CHOA'
+molecular_name = 'CHOLESTEROL OXIDASE'
 
-protein_id = "CHOA"
 num_residues = 546
+
+There's an issue with Residue 507, there's no neighbouring_count generated

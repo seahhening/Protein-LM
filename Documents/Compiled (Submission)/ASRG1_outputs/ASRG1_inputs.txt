@@ -5,4 +5,6 @@ pdb_file_paths = ['./ASRG1_pdb/pdb3tkj.pdb', './ASRG1_pdb/pdb4et0.pdb', './ASRG1
 
 ref_seq = './ASRG1_pdb/AF-Q7L266-F1-model_v4.pdb'
 
+protein_id = 'ASRG1'
+molecular_name = "ISOASPARTYL PEPTIDASE/L-ASPARAGINASE"
 num_residues = 308

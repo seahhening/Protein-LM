@@ -1,4 +1,5 @@
-pdb_file_path = ['./HYAL1_pdb/pdb2pe4.pdb']
+pdb_file_paths = ['./HYAL1_pdb/pdb2pe4.pdb']
 ref_seq = './HYAL1_pdb/AF-Q12794-F1-model_v4.pdb'
-
-Set num_residues to 450 
+protein_id = 'HYAL1'
+molecular_name = 'HYALURONIDASE-1'
+num_residues = 450
