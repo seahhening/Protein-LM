@@ -12,4 +12,4 @@ molecular_name = 'CHOLESTEROL OXIDASE'
 
 num_residues = 546
 
-There's an issue with Residue 507, there's no neighbouring_count generated
+my_residues = [14,54,78,85,131,146,326,375,467,487,53,517]

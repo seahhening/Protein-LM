@@ -5,9 +5,18 @@ molecular_name = "DNA (CYTOSINE-5)-METHYLTRANSFERASE 1"
 num_residues = 1616
 # Removed 8v9u, 6l1f
 
+my_residues = [678,1088,1154,1307,1515,1537,1586]
+
+
+For some reason the PDB files has issues, so do not use the alignment function for this
 
 # Need to fix this
 
+The code is working fine, but it seems like this is abit off
+
+DBREF  4WXX A  351  1600  UNP    P26358   DNMT1_HUMAN     15   1264             
+DBREF  4WXX B  351  1600  UNP    P26358   DNMT1_HUMAN     15   1264   
+
 DBREF  5YDR A    1    73  UNP    J3QS39   J3QS39_HUMAN     1     73             
 DBREF  5YDR B  351   599  UNP    P26358   DNMT1_HUMAN    351    599             
-DBREF  5YDR D    1    73  UNP    J3QS39   J3QS39_HUMAN     1     73   
+DBREF  5YDR D    1    73  UNP    J3QS39   J3QS39_HUMAN     1     73

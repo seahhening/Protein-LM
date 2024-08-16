@@ -4,3 +4,5 @@ ref_seq = './LOX_pdb/AF-Q44467-F1-model_v4.pdb'
 protein_id = 'LOX'
 molecular_name = 'LACTATE OXIDASE'
 num_residues = 374
+
+my_residues = [28, 29, 30, 136, 142, 259, 327, 329]
