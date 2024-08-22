@@ -1,6 +1,6 @@
 # Analysis of Protein Sequence (for Generative Protein Design)
 
-V0.2 by Xiang Yang, 31 July 2024
+V1.0 by Xiang Yang, 22 August 2024
 
 # Overview
 AlphaFold3 uses a generative diffusion model to predict protein structure from input protein sequences. <br>
@@ -26,7 +26,7 @@ Uniprot PDB Files:<br>
 <img src="Pictures/image.png" alt="Uniprot PDB Files" width=80%/>
 
 PDB File Download from EMBL-EBI Page<br>
-<img src="Pictures/image-5.pngimage-2.png" alt="PDB Download_2du2" width=80%/>
+<img src="Pictures/image-2.png" alt="PDB Download_2du2" width=80%/>
 
 AlphaFold Protein Database:<br>
 <img src="Pictures/image-1.png" alt="AlphaFold Consensus Sequence" width=80%/>
@@ -50,18 +50,18 @@ AlphaFold Protein Database:<br>
 
 ## Inputs: 
 (1) Experimental PDB files of <i>target protein</i> obtained through Uniprot <br>
-(2) Ref_Seq PDB file obtained through AlphaFoldDB <br>
-(3) Number of amino acids <br>
-(4) Weights for analysis of protein sequence
+(2) Consensus Sequence PDB file obtained through AlphaFoldDB <br>
+(3) Protein ID and Name <br>
+(4) Number of Residues <br>
+(5) Weights for analysis of protein sequence
 
 ## Outputs:
-(1) Compiled data of protein sequence with 5 parameters in csv format <br>
-(2) Visual plot of the protein sequence and properties of amino acids <br>
-(3) Weighted sums of normalised data for each amino acid
-
-
-### Demo: (To be Updated)
-Try out the [Notebook Demo](https://github.com/salesforce/LAVIS/blob/main/examples/blip2_instructed_generation.ipynb) of this function applied to DNMT1 (homo sapien)! [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/salesforce/LAVIS/blob/main/examples/blip2_instructed_generation.ipynb)
+(1) Sequence alignment of pdb files to consensus sequence in csv format <br>
+(2) Compiled data of protein sequence with 5 parameters in csv format <br>
+(3) N-Neighbour and Conservation Score Plot
+<br>
+(4) Visual plot of the protein sequence and properties of amino acids <br>
+(5) Weighted sums of normalised data for each amino acid
 
 # Functions
 ### 1.1 download_conservation_scores
@@ -78,18 +78,49 @@ Output:
 ```
 ### 1.2 extract_consevation_score
 ```
-Extracts conservation scores from downloaded conservation score files
+Extracts conservation scores from downloaded conservation score files. Returns a list of dictionaries containing residue id, residue name and conservation score
 ```
-### 1.3 extract_pdb_info
+### 1.4 extract_chain_ids
 ```
-Reads a PDB file and extracts 3D spatial coordinates and amino acids.
+Extracts chain ids from a PDB file that correspond to a given molecular name
+
+Input:
+- pdb_file_path (str): path to PDB file
+- molecular name (str)
+
+Output:
+- List of chain IDs that contain molecular name
+```
+### 1.4 extract_pdb_info
+```
+Reads a PDB file and extracts 3D spatial coordinates and amino acids, applying residue ID corrections based on DBREF entries if available
 
 Input:
 - pdb_file_path (str): Path to the PDB file
 
 Output:  
 - A list of dictionaries, each containing information about each atom
+- Dictionary with chain IDs as keys and residue ID offsets as values
 ```
+### 1.5 align_sequences
+```
+Aligns sequences from the reference and PDB sequences based on residue IDs, and sorts the columns by chain ID for each PDB file. 
+```
+### 1.6 align_pdb
+```
+Aligns and compares sequences from the reference and PDB files, without handling offsets and outputs a csv with aligned sequences 
+```
+### 1.7 extract_sites
+```
+Extracts binding site information from a list of PDB files
+
+Input:
+- pdb_file_paths: List of PDB file paths
+
+Output:
+- `binding_sites`: Dictionary where keys are (`residue_id`, `residue_name`) and values are comma-separated pdb_ids with chain_ids
+```
+
 ### 2.1 find_nearest_neighbour
 ```
 Find the n-neighbors closest to the 'CA' atoms in the data using brute force with Euclidean distance.
@@ -138,6 +169,8 @@ Merges conservation score and neighbour count, then assigns hydrophobicity, volu
 Input:
 - conservation_scores: List of dictionaries with conservation score
 - neighbour_counts: List of dictionaries with neighbour count
+- chain_ids
+- chain_offsets
 
 Output:
 - merged_data: List of dictionaries with residue id, residue name, consevation score, neighbour count, hydrophobicity, volume and proton donor/acceptor
@@ -150,6 +183,7 @@ Input:
 - pdb_file_path (str)
 - angstrom (int)
 - protein_id (str)
+- molecular_name (str)
 
 Output:
 - merged_residues: List of dictionaries with with residue id, residue name, consevation score, neighbour count, hydrophobicity, volume and proton donor/acceptor
@@ -192,5 +226,25 @@ Output:
 - summary chart with 5 parameters
 ```
 ### 3.3 analyse_protein
+```
+Sets requirements for the 5 parameters and returns a list of amino acids that fulfil X number of criteria out of the five.
 
+Input:
+- residues: list of dictionaries
+- protein_id
+
+Output
+- amino_acids: list of residues that fulfil the requirement
+```
 ### 3.4 analyse_protein2
+```
+Normalises data to range between 0 and 1, and returns weighted sum from the five parameters, outputs processes data as a csv file whiich is sorted by weighted sum.
+
+Input:
+- residues: list of dictionaries
+- weights (float)
+- protein_id
+
+Output:
+- csv file with normalised data and weighted sum of each residue
+```
