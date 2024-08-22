@@ -12,11 +12,7 @@ For some reason the PDB files has issues, so do not use the alignment function f
 
 # Need to fix this
 
-The code is working fine, but it seems like this is abit off
+The code is working fine, but it seems like this is abit off. Set DNMT1 Offset to 0.
 
 DBREF  4WXX A  351  1600  UNP    P26358   DNMT1_HUMAN     15   1264             
 DBREF  4WXX B  351  1600  UNP    P26358   DNMT1_HUMAN     15   1264   
-
-DBREF  5YDR A    1    73  UNP    J3QS39   J3QS39_HUMAN     1     73             
-DBREF  5YDR B  351   599  UNP    P26358   DNMT1_HUMAN    351    599             
-DBREF  5YDR D    1    73  UNP    J3QS39   J3QS39_HUMAN     1     73
