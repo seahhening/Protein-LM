@@ -1,0 +1,8 @@
+pdb_file_paths = ['./NYLC_pdb/pdb5xyg.pdb', './NYLC_pdb/pdb5xyo.pdb', './NYLC_pdb/pdb5xyp.pdb', 
+'./NYLC_pdb/pdb5xyq.pdb', './NYLC_pdb/pdb5xys.pdb', './NYLC_pdb/pdb5xyt.pdb', './NYLC_pdb/pdb5y0l.pdb', 
+'./NYLC_pdb/pdb5y0m.pdb', './NYLC_pdb/pdb7yu0.pdb', './NYLC_pdb/pdb7yu1.pdb']
+
+ref_seq = './NYLC_pdb/AF-Q79F77-F1-model_v4.pdb'
+protein_id = 'NYLC'
+molecular_name = 'ENDOTYPE 6-AMINOHEXANOAT-OLIGOMER HYDROLASE'
+num_residues = 355

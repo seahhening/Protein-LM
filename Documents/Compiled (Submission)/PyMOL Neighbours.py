@@ -18,7 +18,7 @@ cmd.set("ray_trace_fog", 1)
 cmd.color("wgray", "all")
 
 # List of residues to analyze
-my_residues = [678,1088,1154,1307,1515,1537,1586]
+my_residues = [28, 29, 30, 136, 142, 259, 327, 329]
 
 # Initialize empty lists to hold selections for residues and neighbors
 resi_selections = []
