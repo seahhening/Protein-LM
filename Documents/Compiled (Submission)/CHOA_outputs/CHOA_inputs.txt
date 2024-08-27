@@ -13,3 +13,5 @@ molecular_name = 'CHOLESTEROL OXIDASE'
 num_residues = 546
 
 my_residues = [14,54,78,85,131,146,326,375,467,487,53,517]
+
+5kwf is unable to generate a dssp file
