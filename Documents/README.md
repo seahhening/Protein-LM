@@ -131,7 +131,7 @@ Input:
 
 Output:
 - dssp file from pdb_file saved in dssp folder
-
+```
 ### 2.1 find_nearest_neighbour
 ```
 Find the n-neighbors closest to the 'CA' atoms in the data using brute force with Euclidean distance.
