@@ -5,3 +5,5 @@ molecular_name = 'HYALURONIDASE-1'
 num_residues = 450
 
 my_residues = [80,95,105,109,244,424]
+
+there is only 1 pdb file for this protein

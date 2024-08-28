@@ -1,6 +1,6 @@
 # Analysis of Protein Sequence (for Generative Protein Design)
 
-V1.0 by Xiang Yang, 22 August 2024
+V1.0 by Xiang Yang, 28 August 2024
 
 # Overview
 AlphaFold3 uses a generative diffusion model to predict protein structure from input protein sequences. <br>
@@ -9,6 +9,9 @@ Protein designers can insert their own constraints to bias the diffusion model's
 
 This project analyses a protein sequence on the basis of 5 parameters: N-Neighbour Count, Conservation Score, Hydrophobicity, Volume and Proton Donating/Accepting Ability.
 
+# Summarised Workflow
+
+<img src="Pictures/image6.png" alt="Workflow Summary" width=80%/><br>
 
 # How to Use
 For the selected protein, obtain the consensus sequence from the [AlphaFold Protein Database](https://alphafold.ebi.ac.uk/). This sequence will be used as a backbone for other experimentally determined PDB data to be mapped on.
@@ -42,7 +45,7 @@ AlphaFold Protein Database:<br>
 <img src="https://github.com/XiangYang2601/Protein-LM/blob/main/Documents/Compiled%20(Submission)/LOX_outputs/LOX_summary.png?raw=true" alt="merged_summary" width=80%>
 
 (3) Summary in CSV<br>
-<img src="Pictures/image-5.png" alt="CSV Summary" width=80%/>
+<img src="Pictures/image7.png" alt="CSV Summary" width=80%/>
 
 (4) Analysis Output in CSV<br>
 <img src="Pictures/image-4.png" alt="CSV Analysis" width=80%/>
@@ -61,7 +64,8 @@ AlphaFold Protein Database:<br>
 (3) N-Neighbour and Conservation Score Plot
 <br>
 (4) Visual plot of the protein sequence and properties of amino acids <br>
-(5) Weighted sums of normalised data for each amino acid
+(5) Weighted sums of normalised data for each amino acid<br>
+(6) DSSP files from individual pdb files
 
 # Functions
 ### 1.1 download_conservation_scores
