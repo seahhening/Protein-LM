@@ -6,3 +6,5 @@ ref_seq = './NYLC_pdb/AF-Q79F77-F1-model_v4.pdb'
 protein_id = 'NYLC'
 molecular_name = 'ENDOTYPE 6-AMINOHEXANOAT-OLIGOMER HYDROLASE'
 num_residues = 355
+
+Use 'HYDROLASE' for molecular_name

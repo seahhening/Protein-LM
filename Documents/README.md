@@ -118,8 +118,19 @@ Input:
 - pdb_file_paths: List of PDB file paths
 
 Output:
-- `binding_sites`: Dictionary where keys are (`residue_id`, `residue_name`) and values are comma-separated pdb_ids with chain_ids
+- 'binding_sites': Dictionary where keys are ('residue_id', 'residue_name') and values are comma-separated pdb_ids with chain_ids
 ```
+### 1.8 generate_dssp
+```
+Generates dssp file from pdb file, dssp application should be downloaded from dssp website.
+
+Input:
+- pdb_file: pdb file path
+- dssp_executable_path: path to dssp application
+- protein_id
+
+Output:
+- dssp file from pdb_file saved in dssp folder
 
 ### 2.1 find_nearest_neighbour
 ```
