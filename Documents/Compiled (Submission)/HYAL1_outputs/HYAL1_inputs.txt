@@ -2,6 +2,7 @@ pdb_file_paths = ['./HYAL1_pdb/pdb2pe4.pdb']
 ref_seq = './HYAL1_pdb/AF-Q12794-F1-model_v4.pdb'
 protein_id = 'HYAL1'
 molecular_name = 'HYALURONIDASE-1'
+uniprot_id = 'Q12794'
 num_residues = 450
 
 my_residues = [80,95,105,109,244,424]

@@ -27,17 +27,7 @@ annotate_hydrophobicity_pse = True
 annotate_dssp_pse = True
 
 #Output 1: PyMOL session file to annotate active sites, binding sites, residues with high neighbour count and their respective neighbouring residues
-ref_json = requests.get(url)
 ref_json_directory = f'Documents/Compiled (Submission)/{protein_id}_pdb/{uniprot_id}.json'
- 
-#save the json file into local directory
-if ref_json.status_code == 200:
-    # Save the file to the current directory
-    with open(ref_json_directory, 'wb') as file:
-        file.write(ref_json.content)
-    print(f"File saved as {ref_json_directory} in the current directory: {os.getcwd()}")
-else:
-    print(f"Failed to download the file. Status code: {ref_json.status_code}")
 
 def sanitize_name(ligand_name):
     sanitized_ligand_name = re.sub(r'[^\w]', '_', ligand_name)
@@ -124,7 +114,7 @@ def annotate_sites(selection_dict, annotate_sites_pse=True):
 my_residues = []
 with open(summary_csv_filepath, 'r') as csv_file:
     df = pd.read_csv(summary_csv_filepath)
-    filtered_df = df[df['neighbour_count']>=3] #change the threhsold if required
+    filtered_df = df[df['neighbour_count']>=5] #change the threhsold if required
     my_residues.extend(filtered_df['residue_id'])
 
 
@@ -283,10 +273,6 @@ def annotate_hydrophobicity(ref_seq_directory, hydrophobicity_dict):
 
 #Output3 Visualisation of Proteins based on DSSP values
 residue_number =[]
-relative_solvent_accessibility = []
-
-#conversion of DSSP file type a dictionary file
-residue_number = []
 relative_solvent_accessibility = []
 
 with open(ref_DSSP_filepath, 'r') as file:

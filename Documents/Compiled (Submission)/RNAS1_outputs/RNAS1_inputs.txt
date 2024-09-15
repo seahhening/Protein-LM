@@ -3,4 +3,6 @@ pdb_file_paths = ['./RNAS1_pdb/pdb1a2w.pdb', './RNAS1_pdb/pdb1a5p.pdb', './RNAS1
 ref_seq = './RNAS1_pdb/AF-P61823-F1-model_v4.pdb'
 protein_id = 'RNAS1'
 molecular_name = 'RIBONUCLEASE'
+uniprot_id = 'P61823'
+
 num_residues = 150

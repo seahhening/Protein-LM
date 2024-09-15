@@ -4,7 +4,8 @@ pdb_file_paths = ['./NYLC_pdb/pdb5xyg.pdb', './NYLC_pdb/pdb5xyo.pdb', './NYLC_pd
 
 ref_seq = './NYLC_pdb/AF-Q79F77-F1-model_v4.pdb'
 protein_id = 'NYLC'
-molecular_name = 'ENDOTYPE 6-AMINOHEXANOAT-OLIGOMER HYDROLASE'
+molecular_name = 'HYDROLASE'
+uniprot_id = 'Q79F77'
 num_residues = 355
 
 Use 'HYDROLASE' for molecular_name
