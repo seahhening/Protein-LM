@@ -11,19 +11,18 @@ import numpy as np
 import re
 
 #input area: edit the information about the protein of interest 
-protein_id = 'ASRG1'
-uniprot_id = 'Q7L266'
+protein_id = 'LOX'
+uniprot_id = 'Q44467'
 ref_seq_directory = f'Documents/Compiled (Submission)/{protein_id}_pdb/AF-{uniprot_id}-F1-model_v4.pdb'
 ref_DSSP_filepath = f'Documents/Compiled (Submission)/{protein_id}_dssp/AF-{uniprot_id}-F1-model_v4.dssp'
 summary_csv_filepath = f'Documents/Compiled (Submission)/{protein_id}_outputs/{protein_id}_summary.csv'
 
-# input the URL to download the json file
-url =f'https://rest.uniprot.org/uniprotkb/{uniprot_id}.json?fields=ft_binding%2Cft_site%2Cft_act_site'
-
 #Edit the switches to decide the type of output you want!
 annotate_sites_pse = True
 annotate_neighbours_pse = True
+generate_neighbour_dict = True
 annotate_hydrophobicity_pse = True
+parse_dssp_file = True
 annotate_dssp_pse = True
 
 #Output 1: PyMOL session file to annotate active sites, binding sites, residues with high neighbour count and their respective neighbouring residues
@@ -122,22 +121,25 @@ with open(summary_csv_filepath, 'r') as csv_file:
 resi_selections = []
 neighbors_CA_selections = []
 def generate_neighbours(my_residues):
-    for resi_num in my_residues:
-        current_residue_CA_info = []
-        neighbors_CA_info = []
+    if generate_neighbour_dict:
+        for resi_num in my_residues:
+            current_residue_CA_info = []
+            neighbors_CA_info = []
 
-        # Select the current residue's alpha carbon
-        pymol.cmd.select(f"current_residue_{resi_num}_CA", f"name CA and resi {resi_num}")
-        pymol.cmd.iterate(f"current_residue_{resi_num}_CA", "current_residue_CA_info.append((resi))", space = {'current_residue_CA_info':current_residue_CA_info})
+            # Select the current residue's alpha carbon
+            pymol.cmd.select(f"current_residue_{resi_num}_CA", f"name CA and resi {resi_num}")
+            pymol.cmd.iterate(f"current_residue_{resi_num}_CA", "current_residue_CA_info.append((resi))", space = {'current_residue_CA_info':current_residue_CA_info})
 
-        # Select only the Cα atoms of neighbors within 5Å of the current residue's alpha carbon
-        pymol.cmd.select(f"neighbors_CA_{resi_num}", f"(name CA within 5.0 of current_residue_{resi_num}_CA) and not (resi {resi_num})")
-        pymol.cmd.iterate(f"neighbors_CA_{resi_num}", "neighbors_CA_info.append((resi))", space= {'neighbors_CA_info':neighbors_CA_info})
-        
-        # Append to selection lists
-        resi_selections.append(current_residue_CA_info)
-        neighbors_CA_selections.append(neighbors_CA_info)
-    return resi_selections, neighbors_CA_selections
+            # Select only the Cα atoms of neighbors within 5Å of the current residue's alpha carbon
+            pymol.cmd.select(f"neighbors_CA_{resi_num}", f"(name CA within 5.0 of current_residue_{resi_num}_CA) and not (resi {resi_num})")
+            pymol.cmd.iterate(f"neighbors_CA_{resi_num}", "neighbors_CA_info.append((resi))", space= {'neighbors_CA_info':neighbors_CA_info})
+            
+            # Append to selection lists
+            resi_selections.append(current_residue_CA_info)
+            neighbors_CA_selections.append(neighbors_CA_info)
+        return resi_selections, neighbors_CA_selections
+    else:
+        print('Generation of neighbours is switched off')
 
 
 def annotate_neighbours(neighbour_dict): 
@@ -271,27 +273,39 @@ def annotate_hydrophobicity(ref_seq_directory, hydrophobicity_dict):
         print('Annotation of hydrophobicity is switched off. ')
 
 #Output3 Visualisation of Proteins based on DSSP values
-residue_number =[]
-relative_solvent_accessibility = []
+def parse_dssp_file(ref_DSSP_filepath):
+    if parse_dssp_file:
+        residue_number = []
+        relative_solvent_accessibility = []
 
-with open(ref_DSSP_filepath, 'r') as file:
-    for line in file:
-        # Skip lines that do not contain residue data (e.g., header or footer lines)
-        if line.startswith(' '): 
-            continue
-        resi_number = line[9:16].strip()
-        residue_number.append(resi_number)
+        with open(ref_DSSP_filepath, 'r') as file:
+            for line in file:
+                # Skip lines that do not contain residue data (e.g., header or footer lines)
+                if line.startswith(' '): 
+                    continue
+                
+                resi_number = line[9:16].strip()
+                residue_number.append(resi_number)
 
-        relative_ASA = line[42:49].strip()
-        relative_solvent_accessibility.append(relative_ASA)
+                relative_ASA = line[42:49].strip()
+                relative_solvent_accessibility.append(relative_ASA)
 
+        # Remove the first entries if they are headers or non-data
+        if residue_number and relative_solvent_accessibility:
+            del residue_number[0]
+            del relative_solvent_accessibility[0]
+        
+        # Convert relative solvent accessibility values to float
+        relative_solvent_accessibility = [float(rel_SA) for rel_SA in relative_solvent_accessibility]
 
-del(residue_number[0])
-del(relative_solvent_accessibility[0])
-relative_solvent_accessibility = [float(rel_SA) for rel_SA in relative_solvent_accessibility]
-#the closer the value of REL ASA is to 1, the greater the solvent accessible solvent area
-dssp_dict = dict(zip(residue_number, relative_solvent_accessibility ))
-print(dssp_dict)
+        # Create a dictionary mapping residue numbers to their relative solvent accessibility
+        dssp_dict = dict(zip(residue_number, relative_solvent_accessibility))
+        
+        print(dssp_dict)
+        return dssp_dict
+    else:
+        print('Parsing of DSSP file is switched off')
+
 
 #function to map the DSSP values 
 def dssp_to_colour(relative_solvent_accessibility):
@@ -300,9 +314,10 @@ def dssp_to_colour(relative_solvent_accessibility):
     return [colour[0], colour[1], colour[2]] #extracts RGB data from RGBA data
 
 #function to open and annotate the PyMOL session file 
-def annotate_dssp(ref_seq_directory, dssp_dict):
+def annotate_dssp(ref_seq_directory, ref_DSSP_filepath):
     if annotate_dssp_pse:
 
+        dssp_dict = parse_dssp_file(ref_DSSP_filepath = ref_DSSP_filepath)
         pymol.finish_launching(['pymol', '-cq'])  # Launch PyMOL in headless mode
         pymol.cmd.load(ref_seq_directory)  # Load the PDB file
 
@@ -330,9 +345,9 @@ def annotate_dssp(ref_seq_directory, dssp_dict):
         print('Annotation of DSSP is switched off')
 
 #main control function 
-def generate_all_output_files(ref_seq_directory, ref_json_directory, my_residues,hydrophobicity_dict, dssp_dict):
+def generate_all_output_files(ref_seq_directory, ref_json_directory, my_residues,hydrophobicity_dict, ref_DSSP_filepath):
     site_visualisation_session(ref_seq_directory=ref_seq_directory, ref_json_directory=ref_json_directory, my_residues=my_residues)
     annotate_hydrophobicity(ref_seq_directory=ref_seq_directory, hydrophobicity_dict=hydrophobicity_dict)
-    annotate_dssp(ref_seq_directory = ref_seq_directory, dssp_dict = dssp_dict)
+    annotate_dssp(ref_seq_directory = ref_seq_directory, ref_DSSP_filepath= ref_DSSP_filepath)
 
-main_output = generate_all_output_files(ref_seq_directory=ref_seq_directory, ref_json_directory=ref_json_directory, my_residues=my_residues, hydrophobicity_dict=hydrophobicity_dict, dssp_dict = dssp_dict)
+main_output = generate_all_output_files(ref_seq_directory=ref_seq_directory, ref_json_directory=ref_json_directory, my_residues=my_residues, hydrophobicity_dict=hydrophobicity_dict, ref_DSSP_filepath = ref_DSSP_filepath)
