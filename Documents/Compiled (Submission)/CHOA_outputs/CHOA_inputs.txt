@@ -9,7 +9,7 @@ pdb_file_paths = ['./CHOA_pdb/pdb1b4v.pdb', './CHOA_pdb/pdb1b8s.pdb', './CHOA_pd
 ref_seq = './CHOA_pdb/AF-P12676-F1-model_v4.pdb'
 protein_id = 'CHOA'
 molecular_name = 'CHOLESTEROL OXIDASE'
-
+uniprot_id = 'P12676'
 num_residues = 546
 
 my_residues = [14,54,78,85,131,146,326,375,467,487,53,517]

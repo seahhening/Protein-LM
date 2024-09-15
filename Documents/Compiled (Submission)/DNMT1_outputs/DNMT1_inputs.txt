@@ -2,6 +2,7 @@ pdb_file_paths = ['./DNMT1_pdb/pdb3epz.pdb', './DNMT1_pdb/pdb3pta.pdb', './DNMT1
 ref_seq = './DNMT1_pdb/AF-P26358-F1-model_v4.pdb'
 protein_id = 'DNMT1'
 molecular_name = "DNA (CYTOSINE-5)-METHYLTRANSFERASE 1"
+uniprot_id = 'P26358'
 num_residues = 1616
 # Removed 8v9u, 6l1f
 

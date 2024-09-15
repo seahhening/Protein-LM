@@ -11,8 +11,8 @@ import numpy as np
 import re
 
 #input area: edit the information about the protein of interest 
-protein_id = 'LOX' 
-uniprot_id = 'Q44467'
+protein_id = 'ASRG1'
+uniprot_id = 'Q7L266'
 ref_seq_directory = f'Documents/Compiled (Submission)/{protein_id}_pdb/AF-{uniprot_id}-F1-model_v4.pdb'
 ref_DSSP_filepath = f'Documents/Compiled (Submission)/{protein_id}_dssp/AF-{uniprot_id}-F1-model_v4.dssp'
 summary_csv_filepath = f'Documents/Compiled (Submission)/{protein_id}_outputs/{protein_id}_summary.csv'
@@ -247,11 +247,10 @@ def annotate_hydrophobicity(ref_seq_directory, hydrophobicity_dict):
         pymol.cmd.load(ref_seq_directory)  # Load the PDB file
 
         # Rendering options for better visualization
+        pymol.cmd.show("surface")
         pymol.cmd.set("antialias", 1)
         pymol.cmd.set("orthoscopic", 1)
         pymol.cmd.set("gamma", 1.15)
-        pymol.cmd.set("cartoon_fancy_helices", 1)
-        pymol.cmd.set("cartoon_fancy_sheets", 1)
         pymol.cmd.set("ray_shadows", 0)
         pymol.cmd.set("ray_trace_fog", 1)
 
@@ -292,7 +291,7 @@ del(relative_solvent_accessibility[0])
 relative_solvent_accessibility = [float(rel_SA) for rel_SA in relative_solvent_accessibility]
 #the closer the value of REL ASA is to 1, the greater the solvent accessible solvent area
 dssp_dict = dict(zip(residue_number, relative_solvent_accessibility ))
-
+print(dssp_dict)
 
 #function to map the DSSP values 
 def dssp_to_colour(relative_solvent_accessibility):
